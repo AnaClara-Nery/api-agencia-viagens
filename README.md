@@ -34,6 +34,11 @@ Servidor em http://localhost:3000
       "preco": 8900.00
     }
 
+## Testes no Postman
+
+Importe o arquivo `Agencia-de-Viagens.postman_collection.json` no Postman.
+A variável `baseUrl` já aponta para http://localhost:3000.
+
 ## Tecnologias
 
 Node.js, Express, nodemon, morgan, body-parser, CORS, módulo mysql, MariaDB/MySQL.

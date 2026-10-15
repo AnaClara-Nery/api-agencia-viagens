@@ -1,0 +1,156 @@
+{
+  "info": {
+    "name": "API REST - Agência de Viagens",
+    "description": "Prova P2 - CMP2304 Tecnologia de Construção de Software I (PUC Goiás).\nCRUD do recurso pacote (id, destino, dias, preco).\n\nAntes de testar: execute o script database.sql, configure o acesso ao banco e suba a API com npm start.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "GET /pacote - lista todos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/pacote",
+          "host": ["{{baseUrl}}"],
+          "path": ["pacote"]
+        },
+        "description": "Retorna 200 com o total e a lista de pacotes."
+      },
+      "response": []
+    },
+    {
+      "name": "GET /pacote/:id - busca por id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/pacote/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["pacote", "1"]
+        },
+        "description": "Retorna 200 com o pacote encontrado."
+      },
+      "response": []
+    },
+    {
+      "name": "GET /pacote/:id - id inexistente (404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/pacote/999",
+          "host": ["{{baseUrl}}"],
+          "path": ["pacote", "999"]
+        },
+        "description": "Retorna 404 com JSON de erro."
+      },
+      "response": []
+    },
+    {
+      "name": "POST /pacote - cadastra",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"destino\": \"Maceió\",\n  \"dias\": 5,\n  \"preco\": 3200.00\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/pacote",
+          "host": ["{{baseUrl}}"],
+          "path": ["pacote"]
+        },
+        "description": "Retorna 201 com o pacote cadastrado."
+      },
+      "response": []
+    },
+    {
+      "name": "POST /pacote - corpo incompleto (400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"destino\": \"Maceió\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/pacote",
+          "host": ["{{baseUrl}}"],
+          "path": ["pacote"]
+        },
+        "description": "Retorna 400 informando os campos obrigatórios."
+      },
+      "response": []
+    },
+    {
+      "name": "PUT /pacote/:id - atualiza",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"destino\": \"Fernando de Noronha\",\n  \"dias\": 8,\n  \"preco\": 9500.00\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/pacote/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["pacote", "1"]
+        },
+        "description": "Retorna 200 com o pacote atualizado."
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE /pacote/:id - remove",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/pacote/3",
+          "host": ["{{baseUrl}}"],
+          "path": ["pacote", "3"]
+        },
+        "description": "Retorna 200 confirmando a remoção, ou 404 se o id não existir."
+      },
+      "response": []
+    }
+  ]
+}
